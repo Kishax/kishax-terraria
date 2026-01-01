@@ -1,0 +1,45 @@
+services:
+  terraria-server:
+    build:
+      context: .
+    container_name: kishax-terraria
+    restart: unless-stopped
+    environment:
+      # S3 Configuration
+      AWS_REGION: ${AWS_REGION:-ap-northeast-1}
+      S3_BUCKET: ${S3_BUCKET:-kishax-production-terraria-backups}
+      S3_DOWNLOAD_ENABLED: ${S3_DOWNLOAD_ENABLED:-true}
+
+      # TShock Server Configuration
+      SERVER_PASSWORD: ${SERVER_PASSWORD}
+      SERVER_PORT: ${SERVER_PORT:-7777}
+      MAX_SLOTS: ${MAX_SLOTS:-8}
+      SERVER_NAME: ${SERVER_NAME:-Kishax Terraria Server}
+
+      # Discord Bot Configuration (TerrariaChatRelay)
+      DISCORD_BOT_TOKEN: ${DISCORD_BOT_TOKEN}
+      DISCORD_CHANNEL_ID: ${DISCORD_CHANNEL_ID}
+
+      # TShock REST API Configuration
+      REST_API_ENABLED: ${REST_API_ENABLED:-true}
+      REST_API_PORT: ${REST_API_PORT:-7878}
+      REST_API_TOKEN: ${REST_API_TOKEN}
+      REST_API_USERNAME: ${REST_API_USERNAME:-admin}
+      REST_API_USERGROUP: ${REST_API_USERGROUP:-superadmin}
+
+    volumes:
+      # Terraria world data
+      - terraria_worlds:/terraria/Worlds
+      # TShock database (contains user accounts, permissions, etc.)
+      - terraria_tshock_db:/terraria/tshock
+
+    ports:
+      - "${SERVER_PORT:-7777}:7777"  # Terraria server port
+      - "${REST_API_PORT:-7878}:7878"  # TShock REST API port
+
+    stdin_open: true
+    tty: true
+
+volumes:
+  terraria_worlds:
+  terraria_tshock_db:
