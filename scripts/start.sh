@@ -13,9 +13,10 @@ TCR_PLUGIN_URL="https://github.com/xNarnia/TCR-TerrariaChatRelay/releases/downlo
 if [ ! -f "/terraria/TShock.Server" ]; then
     echo "📥 Downloading TShock ${TSHOCK_VERSION}..."
     wget -q "$TSHOCK_URL" -O /tmp/tshock.zip
-    unzip -q /tmp/tshock.zip -d /terraria
+    unzip -q /tmp/tshock.zip -d /tmp
+    tar -xzf /tmp/TShock-Beta-linux-x64-Release.tar -C /terraria
     chmod +x /terraria/TShock.Server
-    rm /tmp/tshock.zip
+    rm -rf /tmp/tshock.zip /tmp/TShock-Beta-linux-x64-Release.tar
     echo "✅ TShock downloaded successfully"
 else
     echo "✅ TShock already installed"
