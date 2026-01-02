@@ -2,7 +2,7 @@
   "CommentGuide": "Setup Guide: https://tinyurl.com/TCR-Setup",
   "EnableDiscord": true,
   "CommandPrefix": "t!",
-  "ShowPoweredByMessageOnStartup": true,
+  "ShowPoweredByMessageOnStartup": false,
   "OwnerUserId": 0,
   "ManagerUserIds": [
     0

@@ -28,6 +28,7 @@ WORKDIR /terraria
 # Copy configuration files
 COPY config/config.json /terraria/config/config.json
 COPY config/TerrariaChatRelay-Discord.json /terraria/config/TerrariaChatRelay-Discord.json
+COPY config/TCR.json /terraria/config/TCR.json
 
 # Copy startup scripts
 COPY scripts/start.sh /terraria/start.sh

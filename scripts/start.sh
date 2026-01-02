@@ -90,6 +90,19 @@ if [ -f "/terraria/config/TerrariaChatRelay-Discord.json" ]; then
     echo "✅ TerrariaChatRelay-Discord.json configured"
 fi
 
+# Process TCR.json
+echo "📝 Configuring TCR settings..."
+if [ -f "/terraria/config/TCR.json" ]; then
+    TCR_SETTINGS_FILE="/terraria/tshock/TerrariaChatRelay/TCR.json"
+
+    # Copy config if it doesn't exist
+    if [ ! -f "$TCR_SETTINGS_FILE" ]; then
+        cp /terraria/config/TCR.json "$TCR_SETTINGS_FILE"
+    fi
+
+    echo "✅ TCR.json configured"
+fi
+
 # Create serverconfig.txt if it doesn't exist
 if [ ! -f "/terraria/serverconfig.txt" ]; then
     echo "📝 Creating serverconfig.txt..."
