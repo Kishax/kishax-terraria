@@ -1,5 +1,6 @@
 services:
   terraria-server:
+    image: kishax-terraria:latest
     build:
       context: .
     container_name: kishax-terraria
