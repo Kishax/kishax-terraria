@@ -23,12 +23,13 @@ else
 fi
 
 # Download TerrariaChatRelay plugin if not already present
-if [ ! -f "/terraria/ServerPlugins/TCR.Discord.TShock.dll" ]; then
+if [ ! -f "/terraria/ServerPlugins/TerrariaChatRelay.dll" ]; then
     echo "📥 Downloading TerrariaChatRelay plugin..."
     wget -q "$TCR_PLUGIN_URL" -O /tmp/tcr.zip
     unzip -q /tmp/tcr.zip -d /tmp/tcr
     mkdir -p /terraria/ServerPlugins
-    cp /tmp/tcr/*.dll /terraria/ServerPlugins/ 2>/dev/null || true
+    # Copy all .dll files from the extracted directory
+    find /tmp/tcr -name "*.dll" -exec cp {} /terraria/ServerPlugins/ \;
     rm -rf /tmp/tcr.zip /tmp/tcr
     echo "✅ TerrariaChatRelay plugin downloaded successfully"
 else
