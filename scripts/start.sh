@@ -37,7 +37,7 @@ else
 fi
 
 # Download world data and tshock.sqlite from S3 if enabled
-if [ "${S3_DOWNLOAD_ENABLED:-true}" = "true" ]; then
+if [ "${S3_DOWNLOAD_ENABLED:-false}" = "true" ]; then
     echo "🌍 S3 download enabled, checking for world data..."
     /terraria/scripts/download-from-s3.sh || echo "⚠️  S3 download failed or no data found, continuing with fresh setup"
 else
