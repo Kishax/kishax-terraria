@@ -20,6 +20,7 @@ services:
       # Discord Bot Configuration (TerrariaChatRelay)
       DISCORD_BOT_TOKEN: ${DISCORD_BOT_TOKEN}
       DISCORD_CHANNEL_ID: ${DISCORD_CHANNEL_ID}
+      DISCORD_PRESENCE_ACTIVITY: ${DISCORD_PRESENCE_ACTIVITY:-tera.kishax.net}
 
       # TShock REST API Configuration
       REST_API_ENABLED: ${REST_API_ENABLED:-true}

@@ -86,6 +86,7 @@ if [ -f "/terraria/config/TerrariaChatRelay-Discord.json" ]; then
     # Replace environment variables
     sed -i "s|\${DISCORD_BOT_TOKEN}|${DISCORD_BOT_TOKEN}|g" "$TCR_CONFIG_FILE"
     sed -i "s|\${DISCORD_CHANNEL_ID}|${DISCORD_CHANNEL_ID}|g" "$TCR_CONFIG_FILE"
+    sed -i "s|\${DISCORD_PRESENCE_ACTIVITY}|${DISCORD_PRESENCE_ACTIVITY:-tera.kishax.net}|g" "$TCR_CONFIG_FILE"
 
     echo "✅ TerrariaChatRelay-Discord.json configured"
 fi

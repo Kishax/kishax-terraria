@@ -24,7 +24,7 @@
   "GameStatusHelp1": "Sets the bots now playing status. Can be configured with variables",
   "GameStatusHelp2": "%playercount% = Number of current players on the server",
   "GameStatusHelp3": "%maxplayers% = Maximum number of players allowed, based on serverconfig.txt or command prompt entry",
-  "GameStatus": "with %playercount%/%maxplayers% players!",
+  "GameStatus": "${DISCORD_PRESENCE_ACTIVITY}",
   "RetryHelp": "Set NumberOfTimesToRetryConnectionAfterError to -1 to retry infinitely",
   "NumberOfTimesToRetryConnectionAfterError": 5,
   "SecondsToWaitBeforeRetryingAgain": 10,
