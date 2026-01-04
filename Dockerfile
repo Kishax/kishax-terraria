@@ -1,18 +1,19 @@
 # Dockerfile for TShock Terraria Server
 FROM mcr.microsoft.com/dotnet/runtime:6.0
 
-# Install runtime dependencies (removed screen and AWS CLI v2 for size optimization)
+# Install runtime dependencies (removed screen for size optimization)
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
     unzip \
     jq \
-    python3 \
-    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install AWS CLI v1 (lighter than v2)
-RUN pip3 install --no-cache-dir awscli && rm -rf /root/.cache
+# Install AWS CLI v2
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && ./aws/install \
+    && rm -rf awscliv2.zip aws
 
 # Create directories
 RUN mkdir -p /terraria \
