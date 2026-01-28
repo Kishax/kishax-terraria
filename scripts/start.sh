@@ -125,18 +125,11 @@ fi
 echo "Configuration completed!"
 echo "Starting TShock server..."
 
-# Start TShock in screen session
+# Start TShock directly (foreground process for Docker)
 cd /terraria
-screen -dmS terraria ./TShock.Server -config serverconfig.txt
+echo "Terraria server starting..."
+echo "Use 'docker exec -it kishax-terraria' to access server console"
+echo ""
 
-echo "Terraria server started in screen session 'terraria'"
-echo "Use 'docker exec -it kishax-terraria screen -r terraria' to access server console"
-echo "Available screen sessions:"
-screen -list
-
-# Keep container alive by waiting for screen session
-while screen -list | grep -q "terraria" 2>/dev/null; do
-  sleep 30
-done
-
-echo "Screen session has ended. Container will exit."
+# Execute TShock server in foreground (this keeps the container alive)
+exec ./TShock.Server -config serverconfig.txt
